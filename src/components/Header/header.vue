@@ -20,14 +20,22 @@
         >
     <v-card class="pa-10" outlined shaped> 
       <v-row>
-        <v-col>          
+        <v-col
+        sm="6"
+        md="4"
+        lg="4"
+        xl="6">          
           <v-img
             lazy-src="https://i.ibb.co/Pc6Gszg/aboutimg.jpg"
             src='https://i.ibb.co/Pc6Gszg/aboutimg.jpg'
-            height="800"            
+            max-height="800"            
           ></v-img>
         </v-col>
-        <v-col>
+        <v-col
+        sm="6"
+        md="8"
+        lg="8"
+        xl="6">
           <div class="d-flex justify-end mb-6">         
             <v-icon @click="about=false" >mdi-close</v-icon>          
           </div>

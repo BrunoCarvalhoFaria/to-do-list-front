@@ -29,9 +29,10 @@
     </v-container>
     <v-card-actions >
       <v-col
-          cols="12"
-          sm="6"
-          md="8">
+        sm="8"
+        md="8"
+        lg="8"
+        xl="9">
         <v-btn 
           class= "ma-2"                
           color= "success"
@@ -50,9 +51,10 @@
         </v-btn>
       </v-col>
       <v-col
-          cols="12"
-          sm="6"
-          md="4">
+        sm="4"
+        md="4"
+        lg="4"
+        xl="3">
           <v-btn
             outlined
             x-small
