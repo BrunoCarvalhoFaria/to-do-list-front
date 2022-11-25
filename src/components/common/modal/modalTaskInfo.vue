@@ -85,10 +85,10 @@
 <script>
 
 export default{
-  mounted(){
-    // console.log('entrei no mounted')
-    // this.taskTemp = this.$store.state.newTask    
+  created(){    
+    this.taskTemp = this.editItem;
   },
+  
   data: () => ({ 
     nameRules: [
         v => !!v || 'Name is required'        
@@ -105,8 +105,15 @@ export default{
     menu2: false
   }),
   props: {      
-      label: String,      
+      label: String,   
+      editItem: Object   
     },
+  watch:{
+    editItem(){
+      this.taskTemp = this.editItem;
+      console.log('114',this.taskTemp)
+    } 
+  },
 
   computed: {
         

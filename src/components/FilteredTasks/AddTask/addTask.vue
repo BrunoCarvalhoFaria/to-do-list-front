@@ -4,10 +4,7 @@
         class="ma-2 white--text"                
         color="primary"
         elevation="2"          
-        @click="() => {                  
-                  addTask = true                  
-                  this.$parent.$options.data.taskTemp = this.$store.state.taskDefault;
-                  }"              
+        @click="activeModal()"              
       >
         Adicionar nova tarefa
     </v-btn> 
@@ -17,7 +14,8 @@
         v-model="addTask"      
       >    
         <v-card class="pa-10" outlined shaped> 
-          <ModalTaskInfo             
+          <ModalTaskInfo     
+                :editItem='taskDefault'
                 label='Adicionar tarefa:'
                 @save="save()"
                 @modalVisible="changeAddTask()"/>
@@ -44,16 +42,31 @@ export default {
     addTask: false,    
     menu: false,
     modal: false,
-    menu2: false
+    menu2: false,    
+    taskDefault: {
+      name: '',
+      date: '',
+      description: '',
+      done: false
+    }
   }),
 
   methods: {
     ...mapMutations([
       'addNewTask'
     ]),
-    changeAddTask: function () {this.addTask = !this.addTask },
+    
+    activeModal: function (){                  
+      this.addTask = true
+      console.log(61, this.taskDefault)
+      },
+    
+    changeAddTask: function () {       
+      this.addTask = !this.addTask 
+      },
+    
     save: function () {      
-      this.addTask = false;               
+      this.addTask = false;                  
       this.addNewTask()       
     },    
   }

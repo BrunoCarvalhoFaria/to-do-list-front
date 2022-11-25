@@ -17,14 +17,15 @@
               :task = "taskList[index]"              
               @changeStatus = "changeTaskStatus(taskList[index]._id, index)"
               @deleteTask = "deleteTask(taskList[index]._id)"
-              @editTask = "defineEditTask(index)"
+              @editTask = "defineEditTask(index, task)"
               />         
       </v-col>
       <v-dialog
           v-model="editTaskModalVisible"      
         >
           <v-card class="pa-10" outlined shaped>
-            <ModalTaskInfo              
+            <ModalTaskInfo 
+              :editItem='editItem'
               label='Editar tarefa:'
               @save="editTaskCall(editIndex)"
               @modalVisible="changeEditTaskModalVisible()"/>
@@ -63,7 +64,8 @@ export default {
 
   data: () => ({
     editTaskModalVisible: false,
-    editIndex: 0
+    editIndex: 0,
+    editItem: {}
   }),
 
   methods:{
@@ -78,9 +80,9 @@ export default {
       this.editTask(this.$store.state.taskList[index]._id)
       this.editIndex = 0;
     },
-    defineEditTask: function(index){  
-      this.$parent.$options.data.taskTemp = this.$store.state.newTask;
-      console.log(this.$parent.$options.data.taskTemp)
+    defineEditTask: function(index, item){        
+      this.editItem = item;      
+      console.log('item:',item)
       this.editIndex = index;      
       this.editTaskModalVisible = true;      
     },
